@@ -15,8 +15,6 @@ public class equipos  {
     
     public String Nombre,logo,pais;
     public int cantganados;
-    ArrayList<jugadores> lista=new ArrayList();
-
     public equipos(String Nombre, String logo, String pais, int cantganados) {
         this.Nombre = Nombre;
         this.logo = logo;
@@ -56,13 +54,6 @@ public class equipos  {
         this.cantganados = cantganados;
     }
 
-    public ArrayList<jugadores> getLista() {
-        return lista;
-    }
-
-    public void setLista(ArrayList<jugadores> lista) {
-        this.lista = lista;
-    }
 
     @Override
     public String toString() {

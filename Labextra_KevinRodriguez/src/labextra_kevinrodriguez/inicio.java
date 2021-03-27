@@ -5,7 +5,10 @@
  */
 package labextra_kevinrodriguez;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -19,6 +22,7 @@ import javax.swing.tree.MutableTreeNode;
 public class inicio extends javax.swing.JFrame {
 
     ArrayList listahugado = new ArrayList();
+    ArrayList listahugado2 = new ArrayList();
 
     /**
      * Creates new form inicio
@@ -335,6 +339,22 @@ public class inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        admequipos ap = new admequipos("./equipo.txt");
+        ap.cargarArchivo();
+
+        equipos p = new equipos(nombre.getText(), logan.getText(), pais.getText(), Integer.parseInt(cant.getText()));
+        ap.getListaequipo().add(p);
+
+        try {
+            ap.escribirArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        nombre.setText("");
+        logan.setText("");
+        cant.setText("");
+        pais.setText("");
+
         DefaultTreeModel m = (DefaultTreeModel) arbol.getModel();
         DefaultMutableTreeNode raiz
                 = (DefaultMutableTreeNode) m.getRoot();
@@ -342,8 +362,8 @@ public class inicio extends javax.swing.JFrame {
         DefaultMutableTreeNode nodo_equipos;
         nodo_equipos = new DefaultMutableTreeNode(
                 new equipos(nombre.getText(), logan.getText(), pais.getText(), Integer.parseInt(cant.getText())));
-        nodojugadores=new DefaultMutableTreeNode(listahugado);
-        
+        nodojugadores = new DefaultMutableTreeNode(listahugado);
+
         nombre.setText("");
         logan.setText("");
         pais.setText("");
@@ -400,12 +420,29 @@ public class inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+ admijugadores ap = new admijugadores("./jugadores.txt");
+        ap.cargarArchivo();
 
+        jugadores p = new jugadores(nombre1.getText(), apellido.getText(), nacionalidad.getText(), sexo.getSelectedItem().toString(), atleta.getSelectedItem().toString(),
+                Integer.parseInt(cantb.getText()), Integer.parseInt(cantm.getText()), Integer.parseInt(edad.getText()));
+        ap.getListajugadores().add(p);
+
+        try {
+            ap.escribirArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(null, "jugador registrado correctamente");
+        nombre1.setText("");
+        apellido.setText("");
+        nacionalidad.setText("");
+        cantb.setText("");
+        cantm.setText("");
+        edad.setText("");
         jugadores asq = new jugadores(nombre1.getText(), apellido.getText(), nacionalidad.getText(), sexo.getSelectedItem().toString(), atleta.getSelectedItem().toString(),
                 Integer.parseInt(cantb.getText()), Integer.parseInt(cantm.getText()), Integer.parseInt(edad.getText()));
         listahugado.add(asq);
-       
-        
+
         nombre1.setText("");
         apellido.setText("");
         nacionalidad.setText("");
@@ -429,7 +466,6 @@ public class inicio extends javax.swing.JFrame {
                 "Confirm",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
-
         if (response == JOptionPane.OK_OPTION) {
             DefaultTreeModel m
                     = (DefaultTreeModel) arbol.getModel();
@@ -515,5 +551,6 @@ public class inicio extends javax.swing.JFrame {
 DefaultMutableTreeNode nodo_seleccionado;
     jugadores docenteseleccionado;
     equipos estudianteseleccionado;
-  DefaultMutableTreeNode nodojugadores;
+    DefaultMutableTreeNode nodojugadores;
+    String as = "";
 }
