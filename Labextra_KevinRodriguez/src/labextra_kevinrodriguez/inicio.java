@@ -354,14 +354,18 @@ public class inicio extends javax.swing.JFrame {
         logan.setText("");
         cant.setText("");
         pais.setText("");
-
+       int s=0;
         DefaultTreeModel m = (DefaultTreeModel) arbol.getModel();
         DefaultMutableTreeNode raiz
                 = (DefaultMutableTreeNode) m.getRoot();
 
         DefaultMutableTreeNode nodo_equipos;
         nodo_equipos = new DefaultMutableTreeNode(p);
-        nodojugadores = new DefaultMutableTreeNode(listahugado);
+        for (int i = 0; i < listahugado.size(); i++) {
+            int sa= (int) listahugado.get(i);
+            nodojugadores = new DefaultMutableTreeNode(listahugado.get(sa));
+            
+        }
 
         nombre.setText("");
         logan.setText("");
