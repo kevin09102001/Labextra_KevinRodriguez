@@ -360,8 +360,7 @@ public class inicio extends javax.swing.JFrame {
                 = (DefaultMutableTreeNode) m.getRoot();
 
         DefaultMutableTreeNode nodo_equipos;
-        nodo_equipos = new DefaultMutableTreeNode(
-                new equipos(nombre.getText(), logan.getText(), pais.getText(), Integer.parseInt(cant.getText())));
+        nodo_equipos = new DefaultMutableTreeNode(p);
         nodojugadores = new DefaultMutableTreeNode(listahugado);
 
         nombre.setText("");
@@ -426,7 +425,7 @@ public class inicio extends javax.swing.JFrame {
         jugadores p = new jugadores(nombre1.getText(), apellido.getText(), nacionalidad.getText(), sexo.getSelectedItem().toString(), atleta.getSelectedItem().toString(),
                 Integer.parseInt(cantb.getText()), Integer.parseInt(cantm.getText()), Integer.parseInt(edad.getText()));
         ap.getListajugadores().add(p);
-
+         listahugado.add(p);
         try {
             ap.escribirArchivo();
         } catch (IOException ex) {
@@ -439,9 +438,10 @@ public class inicio extends javax.swing.JFrame {
         cantb.setText("");
         cantm.setText("");
         edad.setText("");
-        jugadores asq = new jugadores(nombre1.getText(), apellido.getText(), nacionalidad.getText(), sexo.getSelectedItem().toString(), atleta.getSelectedItem().toString(),
-                Integer.parseInt(cantb.getText()), Integer.parseInt(cantm.getText()), Integer.parseInt(edad.getText()));
-        listahugado.add(asq);
+        
+        /*jugadores asq = new jugadores(nombre1.getText(), apellido.getText(), nacionalidad.getText(), sexo.getSelectedItem().toString(), atleta.getSelectedItem().toString(),
+                Integer.parseInt(cantb.getText()), Integer.parseInt(cantm.getText()), Integer.parseInt(edad.getText()));*/
+       
 
         nombre1.setText("");
         apellido.setText("");
